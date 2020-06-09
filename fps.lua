@@ -63,12 +63,11 @@ function handler(...)
     function self.equip(wep, slot)
 
       if self.equipped then return end
+      assert(slot == 1 or 2, 'Invalid slot')
 
       self.vm = self.rvm:clone()
       self.vm.Parent = cam
       local gun = rs.assets.fps.guns[string.upper(wep)]:clone()
-
-      assert(slot == 1 or 2, 'Invalid slot')
 
       local switch = self.weapons[slot]
 
@@ -98,6 +97,8 @@ function handler(...)
       self.ammo = data.ammo
       self.reserve = data.reserve
       self.chamber = data.chamber
+
+      self.animate('idle')
 
       self.equipped = true
 
@@ -156,9 +157,11 @@ function handler(...)
       if self.aiming then
         local goal = {FieldOfView = curfov - ((curfov * self.data.zoom - curfov) / self.data.zoom)}
         twn(cam, zoominfo, goal)
+        twn(self.vm.root, zoominfo, {CFrame = self.data.aimoffset})
       else
         local goal = {FieldOfView = curfov}
         twn(cam, zoominfo, goal)
+        twn(self.vm.root, zoominfo, {CFrame = self.data.camoffset})
       end
       x = not x
 

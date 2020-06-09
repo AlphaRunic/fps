@@ -45,7 +45,20 @@ local data = {
   firesound = firesound,
   supressedfiresound = supressedfiresound,
 
-  mods = {
+  camoffset = CFrame.new(0,-1.4,0), --viewmodel offset
+  aimoffset = CFrame.new(-1,1.1,-.5),
+
+  zoom = 1.25,--x zoom
+
+  anims = {
+    ["idle"] = '',
+    ["reload"] = '',
+    ["inspect"] = '',
+  },
+
+}
+
+mods = {
 
     ['SELECT FIRE'] = function()
       local mod = {}
@@ -82,7 +95,7 @@ local data = {
       end
 
       return setmetatable(mod, data)
-    end,
+    end
 
     ['SUPRESSOR'] = function()
       local mod = {}
@@ -106,7 +119,7 @@ local data = {
       end
 
       return setmetatable(mod, data)
-    end,
+    end
 
     ['2X RANGER'] = function()
       local mod = {}
@@ -126,19 +139,6 @@ local data = {
       return setmetatable(mod, data)
     end
 
-  },
-
-  camoffset = CFrame.new(0,-1.4,0), --viewmodel offset
-  aimoffset = CFrame.new(-1,1.1,-.5),
-
-  zoom = 1.25,--x zoom
-
-  anims = {
-    ["idle"] = '',
-    ["reload"] = '',
-    ["inspect"] = '',
-  },
-
-}
+  }
 
 return data

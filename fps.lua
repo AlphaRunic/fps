@@ -212,6 +212,8 @@ function handler(...)
     end
 
     local half = CFrame.new(1/2, 1/2, 1/2)
+    local springs = CFrame.new()
+    local camsprings = CFrame.new()
 
     function self.update(dt)
 
@@ -222,13 +224,16 @@ function handler(...)
         delta = delta * .15
       end
 
-      local springs = CFrame.new()
-      local camsprings = CFrame.new()
-
       self.springs.sway:shove(Vector3.new(delta.x/275, delta.y/275))
 
       local reco = self.springs.recoil:update(dt)
       local mousesway = self.springs.sway:update(dt)
+
+      if self.aiming then
+        reco = reco * .75
+      else
+        reco = reco
+      end
 
       springs = springs * (CFrame.Angles(reco.x, reco.y, reco.z + (reco.y + reco.x) * .75)*half) * CFrame.Angles(mousesway.y, mousesway.x, mousesway.x + mousesway.y)
       camsprings = camsprings * CFrame.Angles(reco.x, reco.y, reco.z + (reco.y + reco.x) * .75)

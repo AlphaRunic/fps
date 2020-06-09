@@ -72,18 +72,14 @@ function init(player, firesound, velo, accel, damage, penetration, maxbullethits
       --ricochet
       local rot = bullet.Orientation
       local velo = bullet.Velocity
-      rot.x = -rot.x
-      rot.y = -rot.y
-      rot.z = -rot.z
+      rot = rot * -1
+      velo = velo * -1
       velo = velo * (maxbullethits - hits / maxbullethits)
-      velo.x = -velo.x
-      velo.y = -velo.y
-      velo.z = -velo.z
 
       hits = hits + 1
-      if hits > maxbullethits then 
+      if hits >= maxbullethits then 
         hits = 1
-        game.Debris:AddItem(bullet,0) 
+        game.Debris:AddItem(bullet,.25) 
       end
       
     end

@@ -121,10 +121,10 @@ local data = {
       return setmetatable(mod, data.mods)
     end
 
-  }
+  },
 
   camoffset = CFrame.new(0,-1.4,0), --viewmodel offset
-  aimoffset = CFrame.new(-1,1.1,-.5)
+  aimoffset = CFrame.new(-1,1.1,-.5),
 
   zoom = 1.25,--x zoom
 

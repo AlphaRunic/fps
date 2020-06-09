@@ -142,7 +142,7 @@ function handler(...)
 
     function self.default(prim, sec)
 
-      self.equip(prim)
+      self.equip(prim, 1)
       self.weapons[2] = sec
 
     end

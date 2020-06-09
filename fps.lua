@@ -8,6 +8,7 @@ function handler(...)
   primary, secondary = string.upper(primary), string.upper(secondary)
 
   local chr = plr.Character
+  print('fps activated')
 
   fps = {}
 
@@ -21,6 +22,8 @@ function handler(...)
   assert(assets.fps.guns[primary] and assets.fps.guns[secondary] ~= nil, 'Primary or secondary does not exist.')
 
   function fps.new()
+
+    print('new module made')
 
     local self = {}
 
@@ -55,6 +58,7 @@ function handler(...)
       if not self.equipped then return end
 
       local animation = chr.framework.animations[anim]
+      animation:Stop()
       animation.AnimationId = self.data[anim]
       animation:Play()
       return animation

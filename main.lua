@@ -37,7 +37,7 @@ local network = {} do
 end;
 
 function fire()
-  bullet = fps.fire()
+  local bullet = fps.fire()
   network:send('Bullet', bullet, assets.fps.guns[fps.weapon.Name].sounds.fire, fps.data.velocity, fps.data.acceleration, fps.data.dmg, fps.data.penetration, fps.data.maxbullethits, fps.data.bodymult)
 end
 

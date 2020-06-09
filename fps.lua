@@ -95,6 +95,10 @@ function handler(...)
       local data = self.data == require(self.weapon.data)
       local mods = self.mods == data.mods
 
+      self.ammo = data.ammo
+      self.reserve = data.reserve
+      self.chamber = data.chamber
+
       self.equipped = true
 
     end
@@ -108,6 +112,10 @@ function handler(...)
       self.weapon = {}
       self.data = nil
       self.mods = {}
+
+      self.ammo = 0
+      self.reserve = 0
+      self.chamber = 0
 
       self.equipped = false
 
@@ -222,8 +230,6 @@ function handler(...)
       cam.CFrame = cam.CFrame * camsprings
 
     end
-
-    self.default(primary, secondary)
 
     return setmetatable(self, fps)
 

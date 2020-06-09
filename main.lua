@@ -11,6 +11,7 @@ local rt = game:GetService('RunService')
 local assets = rs.assets
 mod = require(assets.fps.handler)(plr, 'AR-15', 'Beretta');
 fps = mod.new()
+fps.default(primary, secondary)
 
 local network = {} do
 

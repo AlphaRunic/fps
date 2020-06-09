@@ -8,7 +8,7 @@ local network = {} do
 
   local n = {'RemoteEvent', 'RemoteFunction'};
 
-  network:send = function(remote, ...)
+  function network:send(remote, ...)
     local rem = assets.network[remote]
     if rem:IsA(n[1]) then
      rem:FireClient(plr, ...)
@@ -17,7 +17,7 @@ local network = {} do
     end
   end
 
-  network:receive = function(remote, handler)
+  function network:receive(remote, handler)
     local rem = assets.network[remote]
     if rem:IsA(n[1]) then
       rem.OnServerEvent:connect(handler)

@@ -11,6 +11,11 @@ local recoil = {
   max = Vector3.new(.075,.03,.015)
 },
 
+local firesound = script.Parent.sounds.fire.SoundId
+local supressedfiresound = script.Parent.sounds.firesupressed.SoundId
+
+local ammo = 30
+
 local deg = math.rad
 
 local data = {
@@ -31,14 +36,14 @@ local data = {
   maxbullethits = 5,
   penetration = 3,
 
-  ammo = 30,
-  reserve = data.ammo * 5,
+  ammo = ammo,
+  reserve = ammo * 5,
   chamber = 1,
 
   recoil = recoil,
 
-  firesound = script.Parent.sounds.fire.SoundId,
-  supressedfiresound = script.Parent.sounds.firesupressed.SoundId,
+  firesound = firesound,
+  supressedfiresound = supressedfiresound,
 
   mods = {
 
@@ -76,7 +81,7 @@ local data = {
         inputBind:Disconnect()
       end
 
-      return setmetatable(mod, data.mods)
+      return setmetatable(mod, data)
     end,
 
     ['SUPRESSOR'] = function()
@@ -96,11 +101,11 @@ local data = {
 
       mod.terminate = function()
         data.recoil = recoil
-        script.Parent.sounds.fire.SoundId = data.firesound
+        script.Parent.sounds.fire.SoundId = firesound
         game.Debris:AddItem(script.Parent.supressor,0)
       end
 
-      return setmetatable(mod, data.mods)
+      return setmetatable(mod, data)
     end,
 
     ['2X RANGER'] = function()
@@ -118,7 +123,7 @@ local data = {
         game.Debris:AddItem(script.Parent.rangersight,0)
       end
 
-      return setmetatable(mod, data.mods)
+      return setmetatable(mod, data)
     end
 
   },

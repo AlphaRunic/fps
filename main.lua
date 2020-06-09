@@ -1,10 +1,9 @@
 local plr = game.Players.LocalPlayer
 local mouse = plr:GetMouse()
-local chr = script.Parent
+local chr = script.Parent.Parent
 
 local fw = chr.framework
 local anims = fw.animations
-local 
 
 local rs = game:GetService('ReplicatedStorage')
 local rt = game:GetService('RunService')

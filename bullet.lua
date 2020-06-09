@@ -1,7 +1,7 @@
 
-function init(firesound, velo, accel, damage, penetration, maxbullethits, bodymult)
+function init(player, firesound, velo, accel, damage, penetration, maxbullethits, bodymult)
 
-  local chr = script.Parent
+  local chr = player.Character
   local rs = game:GetService('ReplicatedStorage')
 
   firesound = firesound:clone()
@@ -29,7 +29,7 @@ function init(firesound, velo, accel, damage, penetration, maxbullethits, bodymu
 
     if hum then
 
-      if touchDebounce then return end
+      if touchDebounce or hit.Parent.Name == 'viewmodel' or hit.Parent.Name == player.Name then return end
       touchDebounce = true
 
       if limbs[hit.Name] ~= nil then
@@ -41,7 +41,7 @@ function init(firesound, velo, accel, damage, penetration, maxbullethits, bodymu
       end
 
       game.Debris:AddItem(bullet,0)
-      hum:TakeDamage(damage)
+      hum:TakeDamage(dmg)
 
       local hitsound = rs.assets.fps.sfx.bodyhit:clone()
       hitsound.Parent = chr.Head

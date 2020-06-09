@@ -9,7 +9,7 @@ local calibre = '5.56x45mm'
 local recoil = {
   min = Vector3.new(.03,.02,.01),
   max = Vector3.new(.075,.03,.015)
-},
+}
 
 local firesound = script.Parent.sounds.fire.SoundId
 local supressedfiresound = script.Parent.sounds.firesupressed.SoundId

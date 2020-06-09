@@ -84,7 +84,7 @@ mouse.Button1Down:connect(function()
 end)
 
 mouse.Button1Up:connect(function()
-  if fps.data.firetype == 'Auto' or fps.data.firetype == 'Burst' or fps.data.firetype = 'AutoBurst' then
+  if fps.data.firetype == 'Auto' or fps.data.firetype == 'Burst' or fps.data.firetype == 'AutoBurst' then
     down = false
   end
 end)
